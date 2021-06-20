@@ -3,10 +3,13 @@ use std::cmp::Ordering;
 use rand::Rng;
 
 fn main() {
+    run();
+}
+
+fn run() {
     println!("| *** Higher Lower *** |\n");
 
     let secret_number = rand::thread_rng().gen_range(1..101);
-    //println!("The secret number is: {}", secret_number);
 
     loop {
         println!("Please type your guess");
@@ -29,8 +32,29 @@ fn main() {
         Ordering::Greater => println!("Lower"),
         Ordering::Equal => {
             println!("You win!");
-            break;
+            play_again();
             }
         }
+    }
+}
+
+fn play_again() {
+    let mut answer = String::new();
+
+    println!("Do you want to play again? y/n \n");
+    io::stdin()
+        .read_line(&mut answer)
+        .expect("Failed to read line");
+
+    if answer == "y" || answer == "Y" {
+        run()
+    }
+
+    else if answer == "n" || answer == "N" {
+        std::process::exit(0);
+    }
+
+    else {
+        println!("incorrect response");
     }
 }
