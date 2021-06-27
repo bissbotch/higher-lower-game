@@ -11,9 +11,10 @@ fn run() {
     println!("| *** Higher Lower *** |\n");
 
     let mut index = 0;
+    let secret_number = rand::thread_rng().gen_range(1..101);
 
     while index < 1 {
-        let secret_number = rand::thread_rng().gen_range(1..101);
+        println!("number = {}", secret_number);
         println!("Please type your guess");
 
     let mut guess = String::new();
